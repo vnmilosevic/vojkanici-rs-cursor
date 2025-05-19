@@ -13,9 +13,9 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.contact}</h3>
-            <p className="mb-2">Војканићи, Србија</p>
-            <p className="mb-2">Телефон: +381 63 123 456</p>
-            <p className="mb-2">Email: info@vojkanici.rs</p>
+            <p className="mb-2">{t.footer.address}</p>
+            <p className="mb-2">{t.footer.phone}</p>
+            <p className="mb-2">{t.footer.email}</p>
           </div>
 
           {/* Quick Links */}
@@ -64,7 +64,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} Војканићи. Сва права задржана.</p>
+          <p>&copy; {new Date().getFullYear()} {t.nav.logo}. {t.footer.rights}</p>
         </div>
       </div>
     </footer>

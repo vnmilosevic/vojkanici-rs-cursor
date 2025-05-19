@@ -3,11 +3,17 @@ export type Language = 'sr' | 'en';
 export const translations = {
   sr: {
     nav: {
+      logo: 'Војканићи',
       products: 'Производи',
       gallery: 'Галерија',
       order: 'Наручи',
       contact: 'Контакт',
       blog: 'Блог',
+      openMenu: 'Отвори мени',
+      theme: {
+        winter: 'Зима',
+        summer: 'Лето'
+      }
     },
     hero: {
       tagline: 'Органска пољопривреда',
@@ -80,6 +86,10 @@ export const translations = {
       contact: 'Контакт',
       quickLinks: 'Брзи линкови',
       social: 'Друштвене мреже',
+      address: 'Војканићи, Србија',
+      phone: 'Телефон: +381 63 123 456',
+      email: 'Email: info@vojkanici.rs',
+      rights: 'Сва права задржана',
       blog: {
         title: 'Блог',
         description: 'Сазнајте више о нама',
@@ -118,14 +128,24 @@ export const translations = {
         totalPrice: 'Укупна цена'
       }
     },
+    copyright: {
+      text: '© 2025. PG Vojkanići. Сва права задржана.',
+      regNumber: '123456'
+    },
   },
   en: {
     nav: {
+      logo: 'Vojkanići',
       products: 'Products',
       gallery: 'Gallery',
       order: 'Order',
       contact: 'Contact',
       blog: 'Blog',
+      openMenu: 'Open main menu',
+      theme: {
+        winter: 'Winter',
+        summer: 'Summer'
+      }
     },
     hero: {
       tagline: 'Organic Farming',
@@ -198,6 +218,10 @@ export const translations = {
       contact: 'Contact',
       quickLinks: 'Quick Links',
       social: 'Social Media',
+      address: 'Vojkanici, Serbia',
+      phone: 'Phone: +381 63 123 456',
+      email: 'Email: info@vojkanici.rs',
+      rights: 'All rights reserved',
       blog: {
         title: 'Blog',
         description: 'Learn more about us',
@@ -235,6 +259,10 @@ export const translations = {
         contact: 'Contact Details',
         totalPrice: 'Total Price'
       }
+    },
+    copyright: {
+      text: '© 2025. PG Vojkanici. All rights reserved.',
+      regNumber: '123456'
     },
   },
 }; 

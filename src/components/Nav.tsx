@@ -39,7 +39,7 @@ export default function Nav() {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <Link href="/" className="text-2xl font-bold text-gray-900">
-                Војканићи
+                {t.nav.logo}
               </Link>
             </div>
 
@@ -92,7 +92,7 @@ export default function Nav() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
               >
-                <span className="sr-only">Open main menu</span>
+                <span className="sr-only">{t.nav.openMenu}</span>
                 {!isOpen ? (
                   <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -150,7 +150,7 @@ export default function Nav() {
                     onClick={handleThemeChange}
                     className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   >
-                    {isSummer ? '❄️ Зима' : '☀️ Лето'}
+                    {isSummer ? `❄️ ${t.nav.theme.winter}` : `☀️ ${t.nav.theme.summer}`}
                   </button>
                 </>
               )}
