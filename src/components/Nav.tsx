@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { useModal } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
 import ContactModal from './ContactModal';
 import OrderModal from './OrderModal';
 
 export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
+  const { isOrderModalOpen, openOrderModal, closeOrderModal } = useModal();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSummer, setIsSummer] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -52,7 +53,7 @@ export default function Nav() {
                   {t.nav.gallery}
                 </Link>
                 <button
-                  onClick={() => setIsOrderModalOpen(true)}
+                  onClick={openOrderModal}
                   className="text-gray-600 hover:text-gray-900 transition-colors"
                 >
                   {t.nav.order}
@@ -118,7 +119,7 @@ export default function Nav() {
               </Link>
               <button
                 onClick={() => {
-                  setIsOrderModalOpen(true);
+                  openOrderModal();
                   setIsOpen(false);
                 }}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
@@ -165,7 +166,7 @@ export default function Nav() {
 
       <OrderModal
         isOpen={isOrderModalOpen}
-        onClose={() => setIsOrderModalOpen(false)}
+        onClose={closeOrderModal}
       />
     </>
   );

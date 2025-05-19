@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { useModal } from '@/context/ModalContext';
 
 interface ProductProps {
   image: string;
@@ -18,11 +18,12 @@ export default function Product({
   price,
 }: ProductProps) {
   const { t } = useLanguage();
+  const { openOrderModal } = useModal();
 
   return (
-    <Link 
-      href="#contact-modal" 
-      className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+    <div 
+      onClick={openOrderModal}
+      className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
     >
       <div className="relative h-64 w-full">
         <Image
@@ -59,6 +60,6 @@ export default function Product({
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 } 
