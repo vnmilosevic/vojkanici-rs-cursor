@@ -10,7 +10,7 @@ export default function HowWeWork() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const galleryImage = 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80';
-  const galleryImages = Array(12).fill(galleryImage);
+  const galleryImages = Array(5).fill(galleryImage);
 
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
@@ -38,7 +38,7 @@ export default function HowWeWork() {
               {t.howWeWork.cta}
             </Link>
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-5 gap-4">
             {galleryImages.map((image, index) => (
               <button
                 key={index}
