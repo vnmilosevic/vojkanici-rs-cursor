@@ -87,6 +87,30 @@ export const translations = {
       submit: 'Пошаљи',
       cancel: 'Откажи',
     },
+    order: {
+      title: 'Наручите наше производе',
+      steps: {
+        products: 'Избор производа',
+        quantities: 'Количине и цена',
+        contact: 'Контакт подаци',
+        summary: 'Преглед поруџбине'
+      },
+      name: 'Име',
+      phone: 'Телефон',
+      message: 'Порука',
+      quantity: 'Количина',
+      price: 'Цена',
+      total: 'Укупно',
+      next: 'Следеће',
+      previous: 'Претходно',
+      submit: 'Наручи',
+      cancel: 'Откажи',
+      summary: {
+        products: 'Производи',
+        contact: 'Контакт подаци',
+        totalPrice: 'Укупна цена'
+      }
+    },
   },
   en: {
     nav: {
@@ -173,6 +197,30 @@ export const translations = {
       message: 'Message',
       submit: 'Submit',
       cancel: 'Cancel',
+    },
+    order: {
+      title: 'Order Our Products',
+      steps: {
+        products: 'Select Products',
+        quantities: 'Quantities and Price',
+        contact: 'Contact Details',
+        summary: 'Order Summary'
+      },
+      name: 'Name',
+      phone: 'Phone',
+      message: 'Message',
+      quantity: 'Quantity',
+      price: 'Price',
+      total: 'Total',
+      next: 'Next',
+      previous: 'Previous',
+      submit: 'Order',
+      cancel: 'Cancel',
+      summary: {
+        products: 'Products',
+        contact: 'Contact Details',
+        totalPrice: 'Total Price'
+      }
     },
   },
 }; 

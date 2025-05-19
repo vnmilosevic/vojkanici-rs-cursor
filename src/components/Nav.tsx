@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { useEffect, useState } from 'react';
 import ContactModal from './ContactModal';
+import OrderModal from './OrderModal';
 
 export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
@@ -9,6 +10,7 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSummer, setIsSummer] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -49,9 +51,12 @@ export default function Nav() {
                 <Link href="#gallery" className="text-gray-600 hover:text-gray-900 transition-colors">
                   {t.nav.gallery}
                 </Link>
-                <Link href="#order" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <button
+                  onClick={() => setIsOrderModalOpen(true)}
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
                   {t.nav.order}
-                </Link>
+                </button>
                 <button
                   onClick={() => setIsContactModalOpen(true)}
                   className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -111,9 +116,15 @@ export default function Nav() {
               <Link href="#gallery" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                 {t.nav.gallery}
               </Link>
-              <Link href="#order" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+              <button
+                onClick={() => {
+                  setIsOrderModalOpen(true);
+                  setIsOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
                 {t.nav.order}
-              </Link>
+              </button>
               <button
                 onClick={() => {
                   setIsContactModalOpen(true);
@@ -150,6 +161,11 @@ export default function Nav() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+      />
+
+      <OrderModal
+        isOpen={isOrderModalOpen}
+        onClose={() => setIsOrderModalOpen(false)}
       />
     </>
   );
