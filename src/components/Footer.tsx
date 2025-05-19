@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { useModal } from '@/context/ModalContext';
+import { useState } from 'react';
+import GalleryModal from './GalleryModal';
 
 export default function Footer() {
   const { t } = useLanguage();
   const { openOrderModal } = useModal();
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -28,9 +31,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#gallery" className="hover:text-gray-300 transition-colors">
+                <button
+                  onClick={() => setIsGalleryModalOpen(true)}
+                  className="hover:text-gray-300 transition-colors"
+                >
                   {t.nav.gallery}
-                </Link>
+                </button>
               </li>
               <li>
                 <button
@@ -67,6 +73,11 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} {t.nav.logo}. {t.footer.rights}</p>
         </div>
       </div>
+
+      <GalleryModal
+        isOpen={isGalleryModalOpen}
+        onClose={() => setIsGalleryModalOpen(false)}
+      />
     </footer>
   );
 } 
