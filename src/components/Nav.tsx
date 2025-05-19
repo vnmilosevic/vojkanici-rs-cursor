@@ -10,9 +10,14 @@ export default function Nav() {
     setMounted(true);
   }, []);
 
-  const handleLanguageChange = (lang: 'sr' | 'en') => {
-    setLanguage(lang);
-    window.location.href = `/${lang}`;
+  const handleLanguageChange = () => {
+    const newLang = language === 'sr' ? 'en' : 'sr';
+    setLanguage(newLang);
+    if (newLang === 'en') {
+      window.location.href = '/en';
+    } else {
+      window.location.href = '/';
+    }
   };
 
   return (
@@ -42,28 +47,12 @@ export default function Nav() {
                 {t.nav.blog}
               </Link>
               {mounted && (
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => handleLanguageChange('sr')}
-                    className={`px-2 py-1 rounded ${
-                      language === 'sr'
-                        ? 'bg-gray-900 text-white'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    } transition-colors`}
-                  >
-                    СР
-                  </button>
-                  <button
-                    onClick={() => handleLanguageChange('en')}
-                    className={`px-2 py-1 rounded ${
-                      language === 'en'
-                        ? 'bg-gray-900 text-white'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    } transition-colors`}
-                  >
-                    EN
-                  </button>
-                </div>
+                <button
+                  onClick={handleLanguageChange}
+                  className="px-2 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+                >
+                  {language === 'sr' ? 'EN' : 'СР'}
+                </button>
               )}
             </div>
           </div>

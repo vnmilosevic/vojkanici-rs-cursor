@@ -9,8 +9,11 @@ export default function LanguagePage() {
   const { setLanguage } = useLanguage();
 
   useEffect(() => {
-    if (lang && (lang === 'sr' || lang === 'en')) {
-      setLanguage(lang as Language);
+    if (lang === 'en') {
+      setLanguage('en');
+      router.push('/');
+    } else {
+      // Za bilo koji drugi jezik ili rutu, preusmeri na root
       router.push('/');
     }
   }, [lang, setLanguage, router]);
