@@ -132,6 +132,12 @@ export const translations = {
       text: '© 2025. PG Vojkanići. Сва права задржана.',
       regNumber: '123456'
     },
+    gallery: {
+      title: 'Галерија',
+      next: 'Следећа',
+      previous: 'Претходна',
+      close: 'Затвори'
+    },
   },
   en: {
     nav: {
@@ -263,6 +269,12 @@ export const translations = {
     copyright: {
       text: '© 2025. PG Vojkanici. All rights reserved.',
       regNumber: '123456'
+    },
+    gallery: {
+      title: 'Gallery',
+      next: 'Next',
+      previous: 'Previous',
+      close: 'Close'
     },
   },
 }; 

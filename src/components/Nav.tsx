@@ -4,6 +4,7 @@ import { useModal } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
 import ContactModal from './ContactModal';
 import OrderModal from './OrderModal';
+import GalleryModal from './GalleryModal';
 
 export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
@@ -12,6 +13,7 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSummer, setIsSummer] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -49,9 +51,12 @@ export default function Nav() {
                 <Link href="#products" className="text-gray-600 hover:text-gray-900 transition-colors">
                   {t.nav.products}
                 </Link>
-                <Link href="#gallery" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <button
+                  onClick={() => setIsGalleryModalOpen(true)}
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
                   {t.nav.gallery}
-                </Link>
+                </button>
                 <button
                   onClick={openOrderModal}
                   className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -79,7 +84,7 @@ export default function Nav() {
                       onClick={handleThemeChange}
                       className="px-2 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
                     >
-                      {isSummer ? '❄️' : '☀️'}
+                      {isSummer ? `❄️ ${t.nav.theme.winter}` : `☀️ ${t.nav.theme.summer}`}
                     </button>
                   </>
                 )}
@@ -114,9 +119,15 @@ export default function Nav() {
               <Link href="#products" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                 {t.nav.products}
               </Link>
-              <Link href="#gallery" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+              <button
+                onClick={() => {
+                  setIsGalleryModalOpen(true);
+                  setIsOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
                 {t.nav.gallery}
-              </Link>
+              </button>
               <button
                 onClick={() => {
                   openOrderModal();
@@ -167,6 +178,11 @@ export default function Nav() {
       <OrderModal
         isOpen={isOrderModalOpen}
         onClose={closeOrderModal}
+      />
+
+      <GalleryModal
+        isOpen={isGalleryModalOpen}
+        onClose={() => setIsGalleryModalOpen(false)}
       />
     </>
   );
