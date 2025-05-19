@@ -18,6 +18,13 @@ export const translations = {
       cta: 'Наручите сада',
       secondaryCta: 'Сазнајте више',
     },
+    ourStory: {
+      tagline: 'Традиција и квалитет од 1990.',
+      title: 'Пољопривредно газдинство Војканићи',
+      description: 'Наше породично газдинство се бави производњом квалитетних пољопривредних производа већ више од 30 година. Комбинујемо традиционалне методе узгајања са модерним технологијама како бисмо вам обезбедили најбоље производе.',
+      productsButton: 'Наши производи',
+      orderButton: 'Наручи',
+    },
     products: {
       title: 'Наши производи',
       description: 'Откријте нашу палету органских производа',
@@ -128,6 +135,13 @@ export const translations = {
       orderButton: 'Order',
       cta: 'Order Now',
       secondaryCta: 'Learn More',
+    },
+    ourStory: {
+      tagline: 'Tradition and Quality since 1990',
+      title: 'Vojkanići Agricultural Farm',
+      description: 'Our family farm has been producing quality agricultural products for over 30 years. We combine traditional farming methods with modern technologies to provide you with the best products.',
+      productsButton: 'Our Products',
+      orderButton: 'Order',
     },
     products: {
       title: 'Our Products',

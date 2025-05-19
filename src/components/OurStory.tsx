@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { useModal } from '@/context/ModalContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 const OurStory = () => {
   const { openOrderModal } = useModal();
+  const { t } = useLanguage();
 
   return (
     <section className="relative w-full min-h-[600px] flex items-center">
@@ -23,16 +25,15 @@ const OurStory = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl text-white">
           <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-            Tradicija i kvalitet od 1990.
+            {t.ourStory.tagline}
           </span>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Poljoprivredno gazdinstvo Vojkanići
+            {t.ourStory.title}
           </h1>
           
           <p className="text-lg md:text-xl mb-8 text-gray-100">
-            Naše porodično gazdinstvo se bavi proizvodnjom kvalitetnih poljoprivrednih proizvoda već više od 30 godina. 
-            Kombinujemo tradicionalne metode uzgajanja sa modernim tehnologijama kako bismo vam obezbedili najbolje proizvode.
+            {t.ourStory.description}
           </p>
           
           <div className="flex gap-4">
@@ -40,13 +41,13 @@ const OurStory = () => {
               href="#products" 
               className="inline-block bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
             >
-              Naši proizvodi
+              {t.ourStory.productsButton}
             </Link>
             <button 
               onClick={openOrderModal}
               className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white/10 transition-colors"
             >
-              Naruči
+              {t.ourStory.orderButton}
             </button>
           </div>
         </div>
