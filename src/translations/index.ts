@@ -79,6 +79,14 @@ export const translations = {
         cta: 'Посетите блог',
       },
     },
+    contact: {
+      title: 'Контактирајте нас',
+      name: 'Име',
+      phone: 'Телефон',
+      message: 'Порука',
+      submit: 'Пошаљи',
+      cancel: 'Откажи',
+    },
   },
   en: {
     nav: {
@@ -157,6 +165,14 @@ export const translations = {
         description: 'Learn more about us',
         cta: 'Visit Blog',
       },
+    },
+    contact: {
+      title: 'Contact Us',
+      name: 'Name',
+      phone: 'Phone',
+      message: 'Message',
+      submit: 'Submit',
+      cancel: 'Cancel',
     },
   },
 }; 
