@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { useModal } from '@/context/ModalContext';
 
 const OurStory = () => {
+  const { openOrderModal } = useModal();
+
   return (
     <section className="relative w-full min-h-[600px] flex items-center">
       {/* Background Image */}
@@ -39,12 +42,12 @@ const OurStory = () => {
             >
               Naši proizvodi
             </Link>
-            <Link 
-              href="#contact-modal" 
+            <button 
+              onClick={openOrderModal}
               className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white/10 transition-colors"
             >
               Naruči
-            </Link>
+            </button>
           </div>
         </div>
       </div>

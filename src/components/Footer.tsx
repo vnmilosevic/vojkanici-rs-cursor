@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { useModal } from '@/context/ModalContext';
 
 export default function Footer() {
   const { t } = useLanguage();
+  const { openOrderModal } = useModal();
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -31,9 +33,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#order" className="hover:text-gray-300 transition-colors">
+                <button
+                  onClick={openOrderModal}
+                  className="hover:text-gray-300 transition-colors"
+                >
                   {t.nav.order}
-                </Link>
+                </button>
               </li>
               <li>
                 <Link href="#contact" className="hover:text-gray-300 transition-colors">
