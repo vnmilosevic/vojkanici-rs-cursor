@@ -1,0 +1,19 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { Language } from '@/translations';
+import { useLanguage } from '@/context/LanguageContext';
+
+export default function LanguagePage() {
+  const router = useRouter();
+  const { lang } = router.query;
+  const { setLanguage } = useLanguage();
+
+  useEffect(() => {
+    if (lang && (lang === 'sr' || lang === 'en')) {
+      setLanguage(lang as Language);
+      router.push('/');
+    }
+  }, [lang, setLanguage, router]);
+
+  return null;
+} 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface ProductProps {
   image: string;
@@ -9,7 +10,15 @@ interface ProductProps {
   price: string;
 }
 
-const Product = ({ image, tagline, title, description, price }: ProductProps) => {
+export default function Product({
+  image,
+  tagline,
+  title,
+  description,
+  price,
+}: ProductProps) {
+  const { t } = useLanguage();
+
   return (
     <Link 
       href="#contact-modal" 
@@ -25,9 +34,9 @@ const Product = ({ image, tagline, title, description, price }: ProductProps) =>
       </div>
       
       <div className="p-6">
-        <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full mb-3">
-          {tagline}
-        </span>
+        <div className="inline-block bg-gray-100 px-3 py-1 rounded-full mb-4">
+          <span className="text-gray-900 text-sm font-medium">{tagline}</span>
+        </div>
         
         <h3 className="text-xl font-bold mb-2 group-hover:text-gray-900 transition-colors">
           {title}
@@ -43,12 +52,10 @@ const Product = ({ image, tagline, title, description, price }: ProductProps) =>
           </span>
           
           <span className="text-sm font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
-            Naruči →
+            {t.nav.order} →
           </span>
         </div>
       </div>
     </Link>
   );
-};
-
-export default Product; 
+} 

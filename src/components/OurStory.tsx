@@ -32,12 +32,20 @@ const OurStory = () => {
             Kombinujemo tradicionalne metode uzgajanja sa modernim tehnologijama kako bismo vam obezbedili najbolje proizvode.
           </p>
           
-          <Link 
-            href="#products" 
-            className="inline-block bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
-          >
-            Naši proizvodi
-          </Link>
+          <div className="flex gap-4">
+            <Link 
+              href="#products" 
+              className="inline-block bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
+            >
+              Naši proizvodi
+            </Link>
+            <Link 
+              href="#contact-modal" 
+              className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white/10 transition-colors"
+            >
+              Naruči
+            </Link>
+          </div>
         </div>
       </div>
     </section>

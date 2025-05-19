@@ -1,50 +1,45 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
-const HowWeWork = () => {
-  // Koristimo istu sliku više puta za grid
-  const galleryImage = "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80";
-  
-  // Kreirajmo niz od 12 slika za grid (3 reda po 4 slike)
+export default function HowWeWork() {
+  const { t } = useLanguage();
+
+  const galleryImage = 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80';
   const galleryImages = Array(12).fill(galleryImage);
 
   return (
-    <section className="w-full py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="how-we-work" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Leva strana - Tekst */}
-          <div className="text-left">
-            <span className="inline-block px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-full mb-4">
-              Naš pristup
-            </span>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Kako radimo
+          <div>
+            <div className="inline-block bg-gray-100 px-4 py-2 rounded-full mb-6">
+              <span className="text-gray-900 text-sm font-medium">{t.howWeWork.tagline}</span>
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-6">
+              {t.howWeWork.title}
             </h2>
-            
             <p className="text-lg text-gray-600 mb-8">
-              Naše porodično gazdinstvo se bavi proizvodnjom kvalitetnih poljoprivrednih proizvoda već više od 30 godina. 
-              Kombinujemo tradicionalne metode uzgajanja sa modernim tehnologijama kako bismo vam obezbedili najbolje proizvode.
-              Svaki proizvod je rezultat naše posvećenosti kvalitetu i održivosti.
+              {t.howWeWork.description}
             </p>
-            
-            <Link 
-              href="#contact-modal" 
-              className="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors"
+            <Link
+              href="#order"
+              className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 transition-colors"
             >
-              Izaberi proizvode
+              {t.howWeWork.cta}
             </Link>
           </div>
-
-          {/* Desna strana - Grid galerija */}
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 gap-4">
             {galleryImages.map((image, index) => (
-              <div key={index} className="relative aspect-square">
+              <div key={index} className="aspect-square relative rounded-lg overflow-hidden">
                 <Image
                   src={image}
                   alt={`Gallery image ${index + 1}`}
                   fill
-                  className="object-cover rounded-md"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  loading={index < 4 ? "eager" : "lazy"}
+                  quality={75}
                 />
               </div>
             ))}
@@ -53,6 +48,4 @@ const HowWeWork = () => {
       </div>
     </section>
   );
-};
-
-export default HowWeWork; 
+} 
