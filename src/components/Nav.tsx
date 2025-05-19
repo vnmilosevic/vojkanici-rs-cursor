@@ -6,6 +6,7 @@ export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSummer, setIsSummer] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -19,6 +20,11 @@ export default function Nav() {
     } else {
       window.location.href = '/';
     }
+  };
+
+  const handleThemeChange = () => {
+    setIsSummer(!isSummer);
+    // Ovde možemo dodati logiku za promenu tema ako je potrebno
   };
 
   return (
@@ -50,12 +56,20 @@ export default function Nav() {
                 {t.nav.blog}
               </Link>
               {mounted && (
-                <button
-                  onClick={handleLanguageChange}
-                  className="px-2 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
-                >
-                  {language === 'sr' ? 'EN' : 'СР'}
-                </button>
+                <>
+                  <button
+                    onClick={handleLanguageChange}
+                    className="px-2 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+                  >
+                    {language === 'sr' ? 'EN' : 'СР'}
+                  </button>
+                  <button
+                    onClick={handleThemeChange}
+                    className="px-2 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+                  >
+                    {isSummer ? '❄️' : '☀️'}
+                  </button>
+                </>
               )}
             </div>
           </div>
@@ -101,12 +115,20 @@ export default function Nav() {
               {t.nav.blog}
             </Link>
             {mounted && (
-              <button
-                onClick={handleLanguageChange}
-                className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-              >
-                {language === 'sr' ? 'EN' : 'СР'}
-              </button>
+              <>
+                <button
+                  onClick={handleLanguageChange}
+                  className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  {language === 'sr' ? 'EN' : 'СР'}
+                </button>
+                <button
+                  onClick={handleThemeChange}
+                  className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  {isSummer ? '❄️ Зима' : '☀️ Лето'}
+                </button>
+              </>
             )}
           </div>
         </div>
