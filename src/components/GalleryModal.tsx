@@ -12,31 +12,36 @@ const images = [
   {
     id: 1,
     src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80',
-    alt: 'Farm view',
+    alt: 'Pogled na naše gazdinstvo',
+    description: 'Naše porodično gazdinstvo se prostire na preko 10 hektara zemlje, gde uzgajamo organske proizvode u skladu sa prirodom.',
     thumbnail: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80'
   },
   {
     id: 2,
     src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80',
-    alt: 'Cows in pasture',
+    alt: 'Krave na pašnjaku',
+    description: 'Naše krave se slobodno kreću po pašnjacima, gde se hrane prirodnom travom i žive u skladu sa svojim prirodnim instinktima.',
     thumbnail: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80'
   },
   {
     id: 3,
     src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80',
-    alt: 'Cheese production',
+    alt: 'Proizvodnja sira',
+    description: 'Tradicionalna proizvodnja sira od svežeg mleka, koristeći recepte koji se prenose kroz generacije.',
     thumbnail: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80'
   },
   {
     id: 4,
     src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80',
-    alt: 'Vegetable garden',
+    alt: 'Povrtnjak',
+    description: 'Naš povrtnjak je pun sezonskog povrća koje uzgajamo bez upotrebe veštačkih đubriva i pesticida.',
     thumbnail: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80'
   },
   {
     id: 5,
     src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80',
-    alt: 'Chicken coop',
+    alt: 'Kokošinjac',
+    description: 'Naše kokoške žive u prostranim kokošincima sa pristupom slobodnom prostoru, gde se hrane prirodnom hranom.',
     thumbnail: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80'
   }
 ];
@@ -127,6 +132,10 @@ export default function GalleryModal({ isOpen, onClose, initialImageIndex = 0 }:
             className="object-contain"
             priority
           />
+          {/* Image description */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-black bg-opacity-75 text-white p-4 rounded-lg max-w-2xl text-center">
+            <p className="text-sm">{images[currentIndex].description}</p>
+          </div>
         </div>
 
         {/* Thumbnails */}
