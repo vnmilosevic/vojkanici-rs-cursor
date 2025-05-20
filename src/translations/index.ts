@@ -138,6 +138,44 @@ export const translations = {
       previous: 'Претходна',
       close: 'Затвори'
     },
+    testimonials: {
+      title: 'Шта кажу наши купци',
+      description: 'Искуства наших задовољних купаца',
+      items: {
+        user1: {
+          name: 'Милан из Сомбора',
+          description: 'Најбоље млеко које сам икада пио. Свака препорука!'
+        },
+        user2: {
+          name: 'Јелена из Суботице',
+          description: 'Органски сир је невероватно укусан. Породица је одушевљена!'
+        },
+        user3: {
+          name: 'Стефан из Бајмока',
+          description: 'Свеже поврће сваке недеље. Квалитет је изузетан.'
+        },
+        user4: {
+          name: 'Ана из Чонопље',
+          description: 'Одлична комуникација и брза испорука. Препоручујем!'
+        },
+        user5: {
+          name: 'Драган из Бечеја',
+          description: 'Најбоље јаја у граду. Купујем редовно већ 2 године.'
+        },
+        user6: {
+          name: 'Марија из Бачке Тополе',
+          description: 'Органско пилеће месо је невероватно укусно. Враћам се поново!'
+        },
+        user7: {
+          name: 'Ненад из Апатина',
+          description: 'Професионални приступ и квалитетни производи. Задовољан сам.'
+        },
+        user8: {
+          name: 'Софија из Куле',
+          description: 'Најбољи органски производи у региону. Препоручујем свима!'
+        }
+      }
+    },
   },
   en: {
     nav: {
@@ -275,6 +313,44 @@ export const translations = {
       next: 'Next',
       previous: 'Previous',
       close: 'Close'
+    },
+    testimonials: {
+      title: 'What Our Customers Say',
+      description: 'Experiences from our satisfied customers',
+      items: {
+        user1: {
+          name: 'Milan from Sombor',
+          description: 'The best milk I have ever tasted. Highly recommended!'
+        },
+        user2: {
+          name: 'Jelena from Subotica',
+          description: 'The organic cheese is incredibly delicious. Family loves it!'
+        },
+        user3: {
+          name: 'Stefan from Bajmok',
+          description: 'Fresh vegetables every week. Quality is exceptional.'
+        },
+        user4: {
+          name: 'Ana from Conoplja',
+          description: 'Great communication and fast delivery. Recommended!'
+        },
+        user5: {
+          name: 'Dragan from Becej',
+          description: 'Best eggs in town. Been buying regularly for 2 years.'
+        },
+        user6: {
+          name: 'Marija from Backa Topola',
+          description: 'The organic chicken is incredibly tasty. Coming back for more!'
+        },
+        user7: {
+          name: 'Nenad from Apatin',
+          description: 'Professional approach and quality products. Very satisfied.'
+        },
+        user8: {
+          name: 'Sofija from Kula',
+          description: 'Best organic products in the region. Recommend to everyone!'
+        }
+      }
     },
   },
 }; 

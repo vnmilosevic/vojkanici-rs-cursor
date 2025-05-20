@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Nav from '@/components/Nav';
 import OurStory from '@/components/OurStory';
 import Products from '@/components/Products';
+import Testimonials from '@/components/Testimonials';
 import HowWeWork from '@/components/HowWeWork';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
@@ -29,6 +30,7 @@ export default function Home() {
         <Nav />
         <OurStory />
         <Products />
+        <Testimonials />
         <HowWeWork />
         <Footer />
       </main>
