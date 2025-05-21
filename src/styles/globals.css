@@ -4,57 +4,41 @@
 
 @import './cosmic-night.css';
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  background: rgb(var(--background-rgb));
-}
-
 @layer base {
   :root {
-    --background: oklch(0.97 0.01 286.15);
-    --foreground: oklch(0.30 0.06 282.42);
-    --card: oklch(1.00 0 0);
-    --card-foreground: oklch(0.30 0.06 282.42);
-    --popover: oklch(1.00 0 0);
-    --popover-foreground: oklch(0.30 0.06 282.42);
-    --primary: oklch(0.54 0.18 288.03);
-    --primary-foreground: oklch(1.00 0 0);
-    --secondary: oklch(0.92 0.04 292.69);
-    --secondary-foreground: oklch(0.41 0.10 288.17);
-    --muted: oklch(0.96 0.01 286.15);
-    --muted-foreground: oklch(0.54 0.05 284.74);
-    --accent: oklch(0.92 0.04 262.14);
-    --accent-foreground: oklch(0.30 0.06 282.42);
-    --destructive: oklch(0.69 0.21 14.99);
-    --destructive-foreground: oklch(1.00 0 0);
-    --border: oklch(0.91 0.02 285.96);
-    --input: oklch(0.91 0.02 285.96);
-    --ring: oklch(0.54 0.18 288.03);
-    --chart-1: oklch(0.54 0.18 288.03);
-    --chart-2: oklch(0.70 0.16 288.99);
-    --chart-3: oklch(0.57 0.21 276.71);
-    --chart-4: oklch(0.64 0.19 281.81);
-    --chart-5: oklch(0.45 0.18 279.38);
+    --background: hsl(240 100.00% 98.04%);
+    --foreground: hsl(240 27.59% 22.75%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(240 27.59% 22.75%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(240 27.59% 22.75%);
+    --primary: hsl(251.90 55.76% 57.45%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(249.38 100% 93.73%);
+    --secondary-foreground: hsl(249.38 33.33% 37.65%);
+    --muted: hsl(240 50.00% 96.08%);
+    --muted-foreground: hsl(240 12.20% 48.24%);
+    --accent: hsl(218.46 100.00% 92.35%);
+    --accent-foreground: hsl(240 27.59% 22.75%);
+    --destructive: hsl(350.18 100% 66.47%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: hsl(240 34.78% 90.98%);
+    --input: hsl(240 34.78% 90.98%);
+    --ring: hsl(251.90 55.76% 57.45%);
+    --chart-1: hsl(251.90 55.76% 57.45%);
+    --chart-2: hsl(249.64 94.92% 76.86%);
+    --chart-3: hsl(239.18 82.02% 65.10%);
+    --chart-4: hsl(243.16 93.01% 71.96%);
+    --chart-5: hsl(243.65 47.33% 47.65%);
     --radius: 0.5rem;
-    --sidebar: oklch(0.96 0.01 286.15);
-    --sidebar-foreground: oklch(0.30 0.06 282.42);
-    --sidebar-primary: oklch(0.54 0.18 288.03);
-    --sidebar-primary-foreground: oklch(1.00 0 0);
-    --sidebar-accent: oklch(0.92 0.04 262.14);
-    --sidebar-accent-foreground: oklch(0.30 0.06 282.42);
-    --sidebar-border: oklch(0.91 0.02 285.96);
-    --sidebar-ring: oklch(0.54 0.18 288.03);
+    --sidebar: hsl(240 50.00% 96.08%);
+    --sidebar-foreground: hsl(240 27.59% 22.75%);
+    --sidebar-primary: hsl(251.90 55.76% 57.45%);
+    --sidebar-primary-foreground: hsl(0 0% 100%);
+    --sidebar-accent: hsl(218.46 100.00% 92.35%);
+    --sidebar-accent-foreground: hsl(240 27.59% 22.75%);
+    --sidebar-border: hsl(240 34.78% 90.98%);
+    --sidebar-ring: hsl(251.90 55.76% 57.45%);
     --font-sans: Inter, sans-serif;
     --font-serif: Georgia, serif;
     --font-mono: JetBrains Mono, monospace;
@@ -77,39 +61,38 @@ body {
     --tracking-normal: 0em;
   }
   .dark {
-    --background: oklch(0.17 0.02 283.80);
-    --foreground: oklch(0.92 0.03 285.88);
-    --card: oklch(0.23 0.04 282.93);
-    --card-foreground: oklch(0.92 0.03 285.88);
-    --popover: oklch(0.23 0.04 282.93);
-    --popover-foreground: oklch(0.92 0.03 285.88);
-    --primary: oklch(0.72 0.16 290.40);
-    --primary-foreground: oklch(0.17 0.02 283.80);
-    --secondary: oklch(0.31 0.07 283.46);
-    --secondary-foreground: oklch(0.84 0.08 285.91);
-    --muted: oklch(0.27 0.06 281.44);
-    --muted-foreground: oklch(0.72 0.05 285.17);
-    --accent: oklch(0.34 0.08 280.97);
-    --accent-foreground: oklch(0.92 0.03 285.88);
-    --destructive: oklch(0.69 0.21 14.99);
-    --destructive-foreground: oklch(1.00 0 0);
-    --border: oklch(0.33 0.06 282.58);
-    --input: oklch(0.33 0.06 282.58);
-    --ring: oklch(0.72 0.16 290.40);
-    --chart-1: oklch(0.72 0.16 290.40);
-    --chart-2: oklch(0.64 0.10 274.91);
-    --chart-3: oklch(0.75 0.12 244.75);
-    --chart-4: oklch(0.71 0.10 186.68);
-    --chart-5: oklch(0.75 0.18 346.81);
-    --radius: 0.5rem;
-    --sidebar: oklch(0.23 0.04 282.93);
-    --sidebar-foreground: oklch(0.92 0.03 285.88);
-    --sidebar-primary: oklch(0.72 0.16 290.40);
-    --sidebar-primary-foreground: oklch(0.17 0.02 283.80);
-    --sidebar-accent: oklch(0.34 0.08 280.97);
-    --sidebar-accent-foreground: oklch(0.92 0.03 285.88);
-    --sidebar-border: oklch(0.33 0.06 282.58);
-    --sidebar-ring: oklch(0.72 0.16 290.40);
+    --background: hsl(240 26.83% 8.04%);
+    --foreground: hsl(240 48.72% 92.35%);
+    --card: hsl(240 27.78% 14.12%);
+    --card-foreground: hsl(240 48.72% 92.35%);
+    --popover: hsl(240 27.78% 14.12%);
+    --popover-foreground: hsl(240 48.72% 92.35%);
+    --primary: hsl(251.25 100% 78.04%);
+    --primary-foreground: hsl(240 26.83% 8.04%);
+    --secondary: hsl(242.86 32.81% 25.10%);
+    --secondary-foreground: hsl(241.97 100% 88.04%);
+    --muted: hsl(240 33.33% 20%);
+    --muted-foreground: hsl(240 20.25% 69.02%);
+    --accent: hsl(240 33.33% 28.24%);
+    --accent-foreground: hsl(240 48.72% 92.35%);
+    --destructive: hsl(350.18 100% 66.47%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: hsl(240 26.15% 25.49%);
+    --input: hsl(240 26.15% 25.49%);
+    --ring: hsl(251.25 100% 78.04%);
+    --chart-1: hsl(251.25 100% 78.04%);
+    --chart-2: hsl(230.49 44.09% 63.53%);
+    --chart-3: hsl(206.71 89.02% 67.84%);
+    --chart-4: hsl(174.29 41.83% 50.78%);
+    --chart-5: hsl(325.52 100.00% 73.73%);
+    --sidebar: hsl(240 27.78% 14.12%);
+    --sidebar-foreground: hsl(240 48.72% 92.35%);
+    --sidebar-primary: hsl(251.25 100% 78.04%);
+    --sidebar-primary-foreground: hsl(240 26.83% 8.04%);
+    --sidebar-accent: hsl(240 33.33% 28.24%);
+    --sidebar-accent-foreground: hsl(240 48.72% 92.35%);
+    --sidebar-border: hsl(240 26.15% 25.49%);
+    --sidebar-ring: hsl(251.25 100% 78.04%);
     --font-sans: Inter, sans-serif;
     --font-serif: Georgia, serif;
     --font-mono: JetBrains Mono, monospace;
@@ -148,9 +131,10 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }

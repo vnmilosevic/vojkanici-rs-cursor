@@ -14,8 +14,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
+    root.classList.remove('cosmic-night', 'light', 'dark');
+    if (theme === 'cosmic-night') {
+      root.classList.add('dark');
+    } else {
+      root.classList.add(theme);
+    }
   }, [theme]);
 
   return (
