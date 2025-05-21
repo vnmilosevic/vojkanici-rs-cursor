@@ -1,54 +1,38 @@
-import Link from 'next/link';
-import { useModal } from '@/context/ModalContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/translations';
+import Link from 'next/link';
 
 const OurStory = () => {
-  const { openOrderModal } = useModal();
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const t = translations[language].ourStory;
 
   return (
-    <section className="relative w-full min-h-[600px] flex items-center">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2532&auto=format&fit=crop")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-6">
+              {t.tagline}
+            </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t.title}</h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              {t.description}
+            </p>
+          </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl text-white">
-          <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-            {t.ourStory.tagline}
-          </span>
-          
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {t.ourStory.title}
-          </h1>
-          
-          <p className="text-lg md:text-xl mb-8 text-gray-100">
-            {t.ourStory.description}
-          </p>
-          
-          <div className="flex gap-4">
-            <Link 
-              href="#products" 
-              className="inline-block bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
-              {t.ourStory.productsButton}
+              {t.productsButton}
             </Link>
-            <button 
-              onClick={openOrderModal}
-              className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white/10 transition-colors"
+            <Link
+              href="/order"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl border border-gray-200"
             >
-              {t.ourStory.orderButton}
-            </button>
+              {t.orderButton}
+            </Link>
           </div>
         </div>
       </div>

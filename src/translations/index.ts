@@ -176,6 +176,24 @@ export const translations = {
         }
       }
     },
+    features: {
+      title: 'Зашто изабрати нас',
+      description: 'Наши произвођачи нуде најбоље органске производе са ваше фарме',
+      items: {
+        quality: {
+          title: 'Високи квалитет',
+          description: 'Сви наши производи су органски и од највишег квалитета. Гајимо их са пажњом и љубављу.'
+        },
+        delivery: {
+          title: 'Брза испорука',
+          description: 'Испоручујемо свеже производе директно до ваших врата. Гарантујемо брзину и поузданост.'
+        },
+        support: {
+          title: 'Подршка 24/7',
+          description: 'Наш тим је увек спреман да вам помогне. Одговоримо на сва ваша питања и пружамо подршку.'
+        }
+      }
+    },
   },
   en: {
     nav: {
@@ -349,6 +367,24 @@ export const translations = {
         user8: {
           name: 'Sofija from Kula',
           description: 'Best organic products in the region. Recommend to everyone!'
+        }
+      }
+    },
+    features: {
+      title: 'Why Choose Us',
+      description: 'Our producers offer the best organic products from your farm',
+      items: {
+        quality: {
+          title: 'High Quality',
+          description: 'All our products are organic and of the highest quality. We grow them with care and love.'
+        },
+        delivery: {
+          title: 'Fast Delivery',
+          description: 'We deliver fresh products directly to your door. We guarantee speed and reliability.'
+        },
+        support: {
+          title: '24/7 Support',
+          description: 'Our team is always ready to help. We answer all your questions and provide support.'
         }
       }
     },

@@ -45,11 +45,11 @@ const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t.title}</h2>
-          <p className="text-lg text-gray-600">{t.description}</p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">{t.title}</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t.description}</p>
         </div>
         
         <div className="relative">
@@ -57,20 +57,20 @@ const Testimonials = () => {
             {duplicatedTestimonials.map((testimonial, index) => (
               <div
                 key={`${testimonial.id}-${index}`}
-                className="flex-shrink-0 w-[300px] mx-4"
+                className="flex-shrink-0 w-[350px] mx-6 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <div className="flex flex-col">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden mb-3">
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden mb-4 ring-2 ring-gray-100">
                     <img
                       src={testimonial.avatar}
                       alt={t.items[testimonial.id as keyof typeof t.items].name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {t.items[testimonial.id as keyof typeof t.items].name}
                   </h3>
-                  <p className="text-gray-600 italic mt-2">
+                  <p className="text-gray-600 italic text-lg leading-relaxed">
                     "{t.items[testimonial.id as keyof typeof t.items].description}"
                   </p>
                 </div>
@@ -90,7 +90,7 @@ const Testimonials = () => {
           }
         }
         .animate-scroll {
-          animation: scroll 20s linear infinite;
+          animation: scroll 30s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;
