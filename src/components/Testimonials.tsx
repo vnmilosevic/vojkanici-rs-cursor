@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/translations';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Testimonials = () => {
   const { language } = useLanguage();
@@ -45,36 +46,38 @@ const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-background via-background/95 to-background/90 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">{t.title}</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t.description}</p>
+          <h2 className="text-4xl font-bold text-foreground mb-6">{t.title}</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t.description}</p>
         </div>
         
         <div className="relative">
           <div className="flex animate-scroll">
             {duplicatedTestimonials.map((testimonial, index) => (
-              <div
+              <Card
                 key={`${testimonial.id}-${index}`}
-                className="flex-shrink-0 w-[350px] mx-6 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="flex-shrink-0 w-[350px] mx-6 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex flex-col">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden mb-4 ring-2 ring-gray-100">
-                    <img
-                      src={testimonial.avatar}
-                      alt={t.items[testimonial.id as keyof typeof t.items].name}
-                      className="w-full h-full object-cover"
-                    />
+                <CardContent className="p-8">
+                  <div className="flex flex-col">
+                    <div className="relative w-16 h-16 rounded-full overflow-hidden mb-4 ring-2 ring-primary/20">
+                      <img
+                        src={testimonial.avatar}
+                        alt={t.items[testimonial.id as keyof typeof t.items].name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {t.items[testimonial.id as keyof typeof t.items].name}
+                    </h3>
+                    <p className="text-muted-foreground italic text-lg leading-relaxed">
+                      "{t.items[testimonial.id as keyof typeof t.items].description}"
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {t.items[testimonial.id as keyof typeof t.items].name}
-                  </h3>
-                  <p className="text-gray-600 italic text-lg leading-relaxed">
-                    "{t.items[testimonial.id as keyof typeof t.items].description}"
-                  </p>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

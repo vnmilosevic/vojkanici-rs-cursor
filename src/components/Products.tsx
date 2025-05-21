@@ -1,6 +1,8 @@
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/translations';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const Products = () => {
   const { language } = useLanguage();
@@ -34,49 +36,48 @@ const Products = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-24 bg-gradient-to-b from-background via-background/95 to-background/90">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">{t.title}</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t.description}</p>
+          <h2 className="text-4xl font-bold text-foreground mb-6">{t.title}</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t.description}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <div
+            <Card
               key={product.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden hover:shadow-lg transition-all duration-300"
             >
-              <div className="aspect-w-16 aspect-h-9 bg-gray-100">
+              <div className="aspect-w-16 aspect-h-9 bg-muted">
                 <img
                   src={product.image}
                   alt={t.items[product.id as keyof typeof t.items].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="p-6">
-                <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-4">
+              <CardContent className="p-6">
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
                   {t.items[product.id as keyof typeof t.items].tagline}
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                <CardTitle className="text-2xl font-semibold mb-2">
                   {t.items[product.id as keyof typeof t.items].title}
-                </h3>
-                <p className="text-gray-600 mb-4">
+                </CardTitle>
+                <CardDescription className="mb-4">
                   {t.items[product.id as keyof typeof t.items].description}
-                </p>
+                </CardDescription>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-gray-900">
+                  <span className="text-xl font-bold text-foreground">
                     {t.items[product.id as keyof typeof t.items].price}
                   </span>
-                  <Link
-                    href="/order"
-                    className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200"
-                  >
-                    {translations[language].hero.orderButton}
-                  </Link>
+                  <Button asChild>
+                    <Link href="/order">
+                      {translations[language].hero.orderButton}
+                    </Link>
+                  </Button>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

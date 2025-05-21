@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent } from '@/components/ui/card';
+import { X } from 'lucide-react';
 
 interface OrderModalProps {
   isOpen: boolean;
@@ -92,25 +98,24 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-screen items-center justify-center p-4 text-center">
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={onClose} />
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm transition-opacity" onClick={onClose} />
 
-        <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl sm:p-6">
+        <div className="relative transform overflow-hidden rounded-lg bg-background px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl sm:p-6 border border-border">
           <div className="absolute right-0 top-0 pr-4 pt-4">
-            <button
+            <Button
               type="button"
-              className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-foreground"
               onClick={onClose}
             >
-              <span className="sr-only">Close</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+              <X className="h-6 w-6" />
+            </Button>
           </div>
 
           <div className="sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-              <h3 className="text-2xl font-semibold leading-6 text-gray-900 mb-6">
+              <h3 className="text-2xl font-semibold leading-6 text-foreground mb-6">
                 {t.order.title}
               </h3>
 
@@ -121,11 +126,11 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                     <div
                       key={index}
                       className={`flex-1 text-center ${
-                        index + 1 === currentStep ? 'text-gray-900' : 'text-gray-400'
+                        index + 1 === currentStep ? 'text-foreground' : 'text-muted-foreground'
                       }`}
                     >
                       <div className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center ${
-                        index + 1 === currentStep ? 'bg-gray-900 text-white' : 'bg-gray-200'
+                        index + 1 === currentStep ? 'bg-primary text-primary-foreground' : 'bg-muted'
                       }`}>
                         {index + 1}
                       </div>
@@ -140,26 +145,28 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 {currentStep === 1 && (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {products.map(product => (
-                      <div
+                      <Card
                         key={product.id}
-                        className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+                        className={`cursor-pointer transition-all ${
                           selectedProducts.some(p => p.id === product.id)
-                            ? 'border-gray-900 bg-gray-50'
-                            : 'border-gray-200 hover:border-gray-300'
+                            ? 'border-primary bg-primary/5'
+                            : 'hover:border-primary/50'
                         }`}
                         onClick={() => handleProductSelect(product)}
                       >
-                        <div className="relative h-40 mb-4">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            className="object-cover rounded-lg"
-                          />
-                        </div>
-                        <h4 className="font-medium">{product.name}</h4>
-                        <p className="text-gray-600">{product.price} дин</p>
-                      </div>
+                        <CardContent className="p-4">
+                          <div className="relative h-40 mb-4">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              className="object-cover rounded-lg"
+                            />
+                          </div>
+                          <h4 className="font-medium text-foreground">{product.name}</h4>
+                          <p className="text-muted-foreground">{product.price} дин</p>
+                        </CardContent>
+                      </Card>
                     ))}
                   </div>
                 )}
@@ -168,26 +175,26 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 {currentStep === 2 && (
                   <div className="space-y-4">
                     {selectedProducts.map(product => (
-                      <div key={product.id} className="flex items-center justify-between border-b pb-4">
+                      <div key={product.id} className="flex items-center justify-between border-b border-border pb-4">
                         <div>
-                          <h4 className="font-medium">{product.name}</h4>
-                          <p className="text-gray-600">{product.price} дин</p>
+                          <h4 className="font-medium text-foreground">{product.name}</h4>
+                          <p className="text-muted-foreground">{product.price} дин</p>
                         </div>
                         <div className="flex items-center space-x-4">
-                          <input
+                          <Input
                             type="number"
                             min="1"
                             value={product.quantity}
                             onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value))}
-                            className="w-20 rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+                            className="w-20"
                           />
-                          <span className="text-gray-600">
+                          <span className="text-muted-foreground">
                             {product.price * product.quantity} дин
                           </span>
                         </div>
                       </div>
                     ))}
-                    <div className="text-right text-lg font-medium">
+                    <div className="text-right text-lg font-medium text-foreground">
                       {t.order.total}: {calculateTotal()} дин
                     </div>
                   </div>
@@ -196,47 +203,38 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 {/* Step 3: Contact Information */}
                 {currentStep === 3 && (
                   <div className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                        {t.order.name}
-                      </label>
-                      <input
+                    <div className="space-y-2">
+                      <Label htmlFor="name">{t.order.name}</Label>
+                      <Input
                         type="text"
                         name="name"
                         id="name"
                         required
                         value={contactInfo.name}
                         onChange={handleContactChange}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        {t.order.phone}
-                      </label>
-                      <input
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">{t.order.phone}</Label>
+                      <Input
                         type="tel"
                         name="phone"
                         id="phone"
                         required
                         value={contactInfo.phone}
                         onChange={handleContactChange}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                        {t.order.message}
-                      </label>
-                      <textarea
+                    <div className="space-y-2">
+                      <Label htmlFor="message">{t.order.message}</Label>
+                      <Textarea
                         name="message"
                         id="message"
                         rows={4}
                         value={contactInfo.message}
                         onChange={handleContactChange}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -246,26 +244,26 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 {currentStep === 4 && (
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-medium mb-2">{t.order.summary.products}</h4>
+                      <h4 className="font-medium mb-2 text-foreground">{t.order.summary.products}</h4>
                       {selectedProducts.map(product => (
-                        <div key={product.id} className="flex justify-between py-2 border-b">
-                          <span>{product.name} x {product.quantity}</span>
-                          <span>{product.price * product.quantity} дин</span>
+                        <div key={product.id} className="flex justify-between py-2 border-b border-border">
+                          <span className="text-foreground">{product.name} x {product.quantity}</span>
+                          <span className="text-muted-foreground">{product.price * product.quantity} дин</span>
                         </div>
                       ))}
-                      <div className="flex justify-between font-medium mt-2">
-                        <span>{t.order.summary.totalPrice}</span>
-                        <span>{calculateTotal()} дин</span>
+                      <div className="flex justify-between py-2 font-medium">
+                        <span className="text-foreground">{t.order.total}</span>
+                        <span className="text-foreground">{calculateTotal()} дин</span>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-2">{t.order.summary.contact}</h4>
+                      <h4 className="font-medium mb-2 text-foreground">{t.order.summary.contact}</h4>
                       <div className="space-y-2">
-                        <p><span className="font-medium">{t.order.name}:</span> {contactInfo.name}</p>
-                        <p><span className="font-medium">{t.order.phone}:</span> {contactInfo.phone}</p>
+                        <p className="text-muted-foreground">{contactInfo.name}</p>
+                        <p className="text-muted-foreground">{contactInfo.phone}</p>
                         {contactInfo.message && (
-                          <p><span className="font-medium">{t.order.message}:</span> {contactInfo.message}</p>
+                          <p className="text-muted-foreground">{contactInfo.message}</p>
                         )}
                       </div>
                     </div>
@@ -273,31 +271,31 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 )}
 
                 {/* Navigation buttons */}
-                <div className="mt-8 flex justify-between">
+                <div className="flex justify-between mt-8">
                   {currentStep > 1 && (
-                    <button
+                    <Button
                       type="button"
+                      variant="outline"
                       onClick={previousStep}
-                      className="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       {t.order.previous}
-                    </button>
+                    </Button>
                   )}
                   {currentStep < 4 ? (
-                    <button
+                    <Button
                       type="button"
                       onClick={nextStep}
-                      className="inline-flex justify-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500"
+                      className="ml-auto"
                     >
                       {t.order.next}
-                    </button>
+                    </Button>
                   ) : (
-                    <button
+                    <Button
                       type="submit"
-                      className="inline-flex justify-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500"
+                      className="ml-auto"
                     >
                       {t.order.submit}
-                    </button>
+                    </Button>
                   )}
                 </div>
               </form>

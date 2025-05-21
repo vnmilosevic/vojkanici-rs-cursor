@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/translations';
 import { useTheme } from '@/context/ThemeContext';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,71 +25,61 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-gray-900">
+          <Link href="/" className="text-2xl font-bold text-foreground">
             {t.logo}
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/products" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/products" className="text-muted-foreground hover:text-foreground transition-colors">
               {t.products}
             </Link>
-            <Link href="/gallery" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/gallery" className="text-muted-foreground hover:text-foreground transition-colors">
               {t.gallery}
             </Link>
-            <Link href="/order" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/order" className="text-muted-foreground hover:text-foreground transition-colors">
               {t.order}
             </Link>
-            <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
               {t.contact}
             </Link>
-            <Link href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
               {t.blog}
             </Link>
           </div>
 
           {/* Language and Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
-            <button
+            <Button
+              variant="ghost"
               onClick={toggleLanguage}
-              className="px-3 py-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground"
             >
               {language.toUpperCase()}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               onClick={toggleTheme}
-              className="px-3 py-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-muted-foreground hover:text-foreground"
             >
               {t.theme[theme as keyof typeof t.theme]}
-            </button>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+            className="md:hidden"
             aria-label={t.openMenu}
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
 
         {/* Mobile Menu */}
@@ -96,47 +88,49 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 href="/products"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 {t.products}
               </Link>
               <Link
                 href="/gallery"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 {t.gallery}
               </Link>
               <Link
                 href="/order"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 {t.order}
               </Link>
               <Link
                 href="/contact"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 {t.contact}
               </Link>
               <Link
                 href="/blog"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 {t.blog}
               </Link>
               <div className="flex items-center space-x-4 px-3 py-2">
-                <button
+                <Button
+                  variant="ghost"
                   onClick={toggleLanguage}
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   {language.toUpperCase()}
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant="ghost"
                   onClick={toggleTheme}
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   {t.theme[theme as keyof typeof t.theme]}
-                </button>
+                </Button>
               </div>
             </div>
           </div>

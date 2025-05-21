@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <LanguageProvider>
       <ThemeProvider>
         <ModalProvider>
-          <main className={inter.className}>
+          <main className={`${inter.className} min-h-screen bg-background text-foreground`}>
             <Component {...pageProps} />
           </main>
         </ModalProvider>

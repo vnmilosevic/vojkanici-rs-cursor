@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GalleryModalProps {
   isOpen: boolean;
@@ -90,38 +92,38 @@ export default function GalleryModal({ isOpen, onClose, initialImageIndex = 0 }:
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm">
       <div className="relative w-full h-full max-w-7xl max-h-[90vh] p-4">
         {/* Close button */}
-        <button
+        <Button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+          variant="ghost"
+          size="icon"
+          className="absolute top-4 right-4 text-foreground hover:text-primary z-10"
           aria-label={t.gallery.close}
         >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+          <X className="w-6 h-6" />
+        </Button>
 
         {/* Navigation buttons */}
-        <button
+        <Button
           onClick={handlePrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 z-10"
+          variant="ghost"
+          size="icon"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground hover:text-primary z-10"
           aria-label={t.gallery.previous}
         >
-          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
+          <ChevronLeft className="w-8 h-8" />
+        </Button>
+        <Button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 z-10"
+          variant="ghost"
+          size="icon"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground hover:text-primary z-10"
           aria-label={t.gallery.next}
         >
-          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+          <ChevronRight className="w-8 h-8" />
+        </Button>
 
         {/* Main image */}
         <div className="relative w-full h-full">
@@ -133,7 +135,7 @@ export default function GalleryModal({ isOpen, onClose, initialImageIndex = 0 }:
             priority
           />
           {/* Image description */}
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-black bg-opacity-75 text-white p-4 rounded-lg max-w-2xl text-center">
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm text-foreground p-4 rounded-lg max-w-2xl text-center border border-border">
             <p className="text-sm">{images[currentIndex].description}</p>
           </div>
         </div>
@@ -144,8 +146,8 @@ export default function GalleryModal({ isOpen, onClose, initialImageIndex = 0 }:
             <button
               key={image.id}
               onClick={() => setCurrentIndex(index)}
-              className={`relative w-16 h-16 rounded overflow-hidden ${
-                index === currentIndex ? 'ring-2 ring-white' : ''
+              className={`relative w-16 h-16 rounded overflow-hidden transition-all duration-200 ${
+                index === currentIndex ? 'ring-2 ring-primary' : 'hover:ring-2 hover:ring-primary/50'
               }`}
             >
               <Image

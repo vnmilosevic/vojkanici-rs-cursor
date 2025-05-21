@@ -12,7 +12,10 @@ const Logo = ({ size = 'md' }: LogoProps) => {
   };
 
   return (
-    <Link href="/" className={`font-bold ${sizeClasses[size]}`}>
+    <Link 
+      href="/" 
+      className={`font-bold ${sizeClasses[size]} text-foreground hover:text-primary transition-colors`}
+    >
       VOJKANICI
     </Link>
   );
